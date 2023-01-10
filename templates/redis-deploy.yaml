@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    name: redis-deploy
+    {{- include "mychart.labels" . | nindent 4 }}
+    run: redis
+  name: redis
+spec:
+  replicas: {{ .Values.redis.replicaCount}}
+  selector:
+    matchLabels:
+      name: redis-pod
+      {{- include "mychart.labels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        name: redis-pod
+        {{- include "mychart.labels" . | nindent 8 }}
+        run: redis
+      name: redis
+    spec:
+      containers:
+        - image: "{{ .Values.redis.image.repository }}:{{ .Values.redis.image.tag }}"
+          name: redis
+          ports:
+            - containerPort: 6379
+        
+

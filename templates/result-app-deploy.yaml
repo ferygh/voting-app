@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: result-app-deploy
+  labels:
+    {{- include "mychart.labels" . | nindent 4 }}
+    name: result-app-deploy
+spec:
+  replicas: {{ .Values.resultApp.replicaCount}}
+  selector:
+    matchLabels:
+      {{- include "mychart.labels" . | nindent 6 }}
+      name: result-app-pod
+  template:
+    metadata:
+      name: result-app-pod
+      labels:
+        {{- include "mychart.labels" . | nindent 8 }}
+        name: result-app-pod
+    spec:
+      containers:
+        - name: result-app  
+          image: "{{ .Values.resultApp.image.repository }}:{{ .Values.resultApp.image.tag }}"
+          ports:
+            - containerPort: 80    
+            

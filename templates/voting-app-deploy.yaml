@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: voting-app-deploy
+  labels:
+    {{- include "mychart.labels" . | nindent 4 }}
+    name: voting-app-deploy
+spec:
+  replicas: {{ .Values.votingApp.replicaCount }}
+  selector: 
+    matchLabels:
+      {{- include "mychart.labels" . | nindent 6 }}
+      name: voting-app-pod
+  template:
+    metadata:    
+      name: voting-app-pod
+      labels:
+        {{- include "mychart.labels" . | nindent 8 }}
+        name: voting-app-pod
+    spec:
+      containers:
+      - name: voting-app  
+        image: "{{ .Values.votingApp.image.repository }}:{{ .Values.votingApp.image.tag }}"
+        ports:
+          - containerPort: 80

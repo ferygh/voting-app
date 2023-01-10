@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: worker-deploy
+  labels:
+    {{- include "mychart.labels" . | nindent 4 }}
+    name: worker-app-deploy
+spec:
+  replicas: {{ .Values.workerApp.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "mychart.labels" . | nindent 6 }}
+      name: worker-app-pod
+  template:
+    metadata:
+      name: worker-pod
+      labels:
+        {{- include "mychart.labels" . | nindent 8 }}
+        name: worker-app-pod
+    spec:
+      containers:
+        - name: worker-app  
+          image: "{{ .Values.workerApp.image.repository }}:{{ .Values.workerApp.image.tag }}"
