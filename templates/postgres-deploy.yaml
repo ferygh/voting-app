@@ -1,6 +1,8 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  annotations:
+    downscaler/uptime: Mon-Sun 07:30-18:00 AEST
   name: postgres-deploy
   labels:
     {{- include "mychart.labels" . | nindent 4 }}
