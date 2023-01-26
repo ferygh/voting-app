@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  creationTimestamp: "2023-01-26T09:13:49Z"
+  generation: 31
+  name: downscaler
+  namespace: argocd
+  resourceVersion: "225085"
+  uid: 1e7f0ab3-8d8d-41e7-8231-80342478d7dd
+spec:
+  destination:
+    namespace: vote
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    chart: kube-downscaler
+    repoURL: https://charts.deliveryhero.io/
+    targetRevision: 0.7.0
