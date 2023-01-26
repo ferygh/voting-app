@@ -9,7 +9,7 @@ votingApp:
     tag: "before"
 
 workerApp:
-  replicaCount: 2
+  replicaCount: 1
   image:
     repository: dockersamples/examplevotingapp_worker
     tag: "latest"
