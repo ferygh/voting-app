@@ -19,9 +19,11 @@ spec:
     helm:
       values: |
       replicaCount: 1
+      namespace:
+        inactive_in: karpenter
       interval: 60
       image:
         args:
-          - --default-uptime="Mon-Sat 07:30-20:30 Australia/Sydney"
+          - --default-uptime="Mon-Fri 07:30-20:30 Australia/Sydney"
           - --downscaler/downtime-replicas: "0"
       
