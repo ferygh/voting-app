@@ -19,8 +19,6 @@ spec:
     helm:
       values: |
       replicaCount: 0
-      namespace:
-        inactive_in: karpenter
       interval: 60
       image:
         args:
