@@ -16,3 +16,12 @@ spec:
     chart: kube-downscaler
     repoURL: https://charts.deliveryhero.io/
     targetRevision: 0.7.0
+    helm:
+      values: |
+      image:
+        args:
+          - --default-uptime="Mon-Fri 07:30-20:30 Australia/Sydney"
+      namespace:
+        active_in: default,vote,argocd
+        inactive_in: karpenter
+      interval: 30

@@ -31,33 +31,7 @@ redis:
   image:
     repository: redis
     tag: "latest"
-
-##image:
-  #repository: nginx
-  #pullPolicy: IfNotPresent
-  # Overrides the image tag whose default is the chart appVersion.
-  #tag: ""
-  
-image:
-  repository: hjacobs/kube-downscaler
-  tag: 22.9.0
-  pullPolicy: IfNotPresent  
-  args: []
-    --default-uptime="Mon-Fri 07:30-20:30 Australia/Sydney"
-
-events:
-  enable: true
-
-namespace:
-## Namespace where kube-downscaler is going to be deployed.
-  ## Deployment will query all namespaces if left empty:
-  active_in: default,vote,argocd
-## Deployment exclude these namespaces:
-  inactive_in: karpenter
-## Default is 60 seconds
-interval: 60
-
-  
+ 
   
 imagePullSecrets: []
 nameOverride: ""
