@@ -18,11 +18,12 @@ spec:
     targetRevision: 0.7.0
     helm:
       values: |
+      replicaCount: 1
+      namespace:
+        inactive_in: karpenter
+      interval: 60
       image:
         args:
           - --default-uptime="Mon-Fri 07:30-20:30 Australia/Sydney"
           - --downscaler/downtime-replicas: "0"
-      namespace:
-        active_in: default,vote,argocd
-        inactive_in: karpenter
-      interval: 30
+      
