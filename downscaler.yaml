@@ -21,6 +21,7 @@ spec:
       image:
         args:
           - --default-uptime="Mon-Fri 07:30-20:30 Australia/Sydney"
+          - --downscaler/downtime-replicas: "0"
       namespace:
         active_in: default,vote,argocd
         inactive_in: karpenter
