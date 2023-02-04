@@ -18,10 +18,10 @@ spec:
     targetRevision: 0.7.0
     helm:
       values: |
-      replicaCount: 0
+      replicaCount: 1
       interval: 60
       image:
         args:
-          - --default-uptime="Mon-Fri 07:30-20:30 Australia/Sydney"
+          - --default-uptime="Mon-Sat 07:30-20:30 Australia/Sydney"
           - --downscaler/downtime-replicas: "0"
       
